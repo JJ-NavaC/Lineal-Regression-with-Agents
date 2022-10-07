@@ -1,5 +1,1 @@
-Main.class
-DescendingGradient.class
-RegressionLinealMultiple1.class
-RegressionLinealMultiple2.class
-RegressionLinealSimple.class
+*.class
