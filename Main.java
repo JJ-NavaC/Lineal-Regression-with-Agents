@@ -79,14 +79,8 @@ public class Main {
                  */
 
                 // DECENDING GRADIENT
-                DescendingGradient descendingGradient = new DescendingGradient(x, y);
-                // System.out.println("Sum X: " + descendingGradient.getSumX());
-                // System.out.println("Sum Y: " + descendingGradient.getSumY());
-                // System.out.println("N: " + descendingGradient.getN());
-                // System.out.println("Beta 0: " + descendingGradient.getBeta_0());
-                // System.out.println("Beta 1: " + descendingGradient.getBeta_1());                
-                // System.out.println("Partial Derivate B0: " + descendingGradient.getPartialDerivateB0()); 
-                // System.out.println("Partial Derivate B1: " + descendingGradient.getPartialDerivateB1()); 
-                
+                DescendingGradient descendingGradient = new DescendingGradient(x, y, 0.1, 0.003);
+                descendingGradient.process();
+                System.out.println("\nFinal Error: " + descendingGradient.getError() + " by a Learning Rate of " + descendingGradient.getLearningRate() + " and an Error Tolerance of: " + descendingGradient.getErrorTorelance());
         }
 }
