@@ -1,9 +1,8 @@
 
 public class Main {
-        /*
-         * static int[] x = { 1, 2, 2, 3 };
-         * static int[] y = { 1, 2, 3, 6 };
-         */
+
+        static int[] x = { 1, 2, 2, 3 };
+        static int[] y = { 1, 2, 3, 6 };
 
         /*
          * static double[] x1 = { 41.9, 43.4, 43.9, 44.5, 47.3, 47.5, 47.9, 50.2, 52.8,
@@ -80,6 +79,6 @@ public class Main {
                  */
 
                 // DECENDING GRADIENT
-
+                
         }
 }
