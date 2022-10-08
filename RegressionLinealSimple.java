@@ -20,6 +20,9 @@ public class RegressionLinealSimple {
             this.Yi = this.Yi + _setY[i];
         }
         n = _setX.length;
+        calculateBeta_0();
+        calculateBeta_1();
+        setY(getFormula());
     }
 
     // Getters
@@ -60,36 +63,36 @@ public class RegressionLinealSimple {
     }
 
     // Setters
-    public void setBeta_0(int beta_0) {
-        this.beta_0 = beta_0;
+    public void setBeta_0(int _beta_0) {
+        this.beta_0 = _beta_0;
     }
 
-    public void setBeta_1(int beta_1) {
-        this.beta_1 = beta_1;
+    public void setBeta_1(int _beta_1) {
+        this.beta_1 = _beta_1;
     }
 
-    public void setX(String x) {
-        this.y = x;
+    public void setSetX(int[] _x) {
+        this.setX = _x;
     }
 
-    public void setSetX(int[] x) {
-        this.setX = x;
+    public void setSetY(int[] _y) {
+        this.setY = _y;
     }
 
-    public void setSetY(int[] y) {
-        this.setY = y;
+    public void setXi(int _Xi) {
+        this.Xi = _Xi;
     }
 
-    public void setXi(int Xi) {
-        this.Xi = Xi;
+    public void setYi(int _Yi) {
+        this.Yi = _Yi;
     }
 
-    public void setYi(int Yi) {
-        this.Yi = Yi;
+    public void setN(int _n) {
+        this.n = _n;
     }
 
-    public void setN(int n) {
-        this.n = n;
+    public void setY(String _y) {
+        this.y = _y;
     }
 
     // Calculate beta_0

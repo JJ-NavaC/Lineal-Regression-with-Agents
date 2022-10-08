@@ -25,6 +25,14 @@ public class RegressionLinealMultiple1 {
         this.setX2 = _setX2;
         this.setY = _setY;
         this.n = _setX1.length;
+        setMatrix(); // Form X
+        setMatrixT(); // Get X'
+        setMatrixMult(); // Get (X'X)
+        setDetMatrix(); // Get Det(X'X)
+        setMatrixAdjT(); // Get *(X'X)'
+        setMatrixInv(); // Get (X'X)-1
+        setVectorXY(); // Get (X'Y)
+        setVectorBetas(); // Get β
     }
 
     // Getters
@@ -56,13 +64,49 @@ public class RegressionLinealMultiple1 {
         return beta_2;
     }
 
+    public double[][] getMatrix() {
+        return matrix;
+    }
+
+    public double[][] getMatrixT() {
+        return matrixT;
+    }
+
+    public double[][] getMatrixXX() {
+        return matrixXX;
+    }
+
+    public double[][] getMatrixInv() {
+        return matrixInv;
+    }
+
+    public double[][] getMatrixAdj() {
+        return matrixAdj;
+    }
+
+    public double[][] getMatrixAdjT() {
+        return matrixAdjT;
+    }
+
+    public double[] getVectorXY() {
+        return vectorXY;
+    }
+
     public double getDetMatrix() {
         return detMatrix;
     }
 
+    public int getN() {
+        return n;
+    }
+
     public String getFormula() {
-        this.y = "ŷ = " + this.beta_0 + " + " + this.beta_1 + "x1 + " + this.beta_2 + "x2";
+        this.y = "ŷ = " + this.beta_0 + " + " + this.beta_1 + "x1 + " + this.beta_2 + "x2 + ε";
         return this.y;
+    }
+
+    public double[] getVectorBetas() {
+        return vectorBetas;
     }
 
     // Setters
@@ -107,7 +151,8 @@ public class RegressionLinealMultiple1 {
                 }
             }
         }
-        printMatrix(this.matrix, this.n, 3);
+        // System.out.println("Matrix X");
+        // printMatrix(this.matrix, this.n, 3);
     }
 
     public void setMatrixT() {
@@ -117,7 +162,8 @@ public class RegressionLinealMultiple1 {
                 this.matrixT[i][j] = this.matrix[j][i];
             }
         }
-        printMatrix(this.matrixT, 3, this.n);
+        // System.out.println("Matrix X'");
+        // printMatrix(this.matrixT, 3, this.n);
     }
 
     public void setMatrixMult() {
@@ -133,7 +179,8 @@ public class RegressionLinealMultiple1 {
                 }
             }
         }
-        printMatrix(this.matrixXX, 3, 3);
+        // System.out.println("\nMatrix X'X");
+        // printMatrix(this.matrixXX, 3, 3);
     }
 
     public void setDetMatrix() {
@@ -171,8 +218,8 @@ public class RegressionLinealMultiple1 {
         this.matrixAdj[1][2] = this.matrixAdj[1][2] * (-1);
         this.matrixAdj[2][1] = this.matrixAdj[2][1] * (-1);
 
-        System.out.println("\nMatrix Adj: ");
-        printMatrix(this.matrixAdj, 3, 3);
+        // System.out.println("\nMatrix Adj: ");
+        // printMatrix(this.matrixAdj, 3, 3);
 
         this.matrixAdjT = new double[3][3];
         for (int i = 0; i < 3; i++) {
@@ -180,8 +227,8 @@ public class RegressionLinealMultiple1 {
                 this.matrixAdjT[i][j] = this.matrixAdj[j][i];
             }
         }
-        System.out.println("\nMatrix AdjT: ");
-        printMatrix(this.matrixAdjT, 3, 3);
+        // System.out.println("\nMatrix AdjT: ");
+        // printMatrix(this.matrixAdjT, 3, 3);
     }
 
     public void setMatrixInv() {
@@ -191,8 +238,8 @@ public class RegressionLinealMultiple1 {
                 this.matrixInv[i][j] = this.matrixAdjT[i][j] / getDetMatrix();
             }
         }
-        System.out.println("\nMatrix (X'X)-1: ");
-        printMatrix(this.matrixInv, 3, 3);
+        // System.out.println("\nMatrix (X'X)-1: ");
+        // printMatrix(this.matrixInv, 3, 3);
     }
 
     public void setVectorXY() {
@@ -202,7 +249,8 @@ public class RegressionLinealMultiple1 {
                 this.vectorXY[i] = this.vectorXY[i] + (this.matrixT[i][j] * this.setY[j]);
             }
         }
-        printVector(this.vectorXY, 3);
+        // System.out.println("\nVector X'y: ");
+        // printVector(this.vectorXY, 3);
     }
 
     public void setVectorBetas() {
@@ -212,7 +260,8 @@ public class RegressionLinealMultiple1 {
                 this.vectorBetas[i] = this.vectorBetas[i] + (this.matrixInv[i][j] * this.vectorXY[j]);
             }
         }
-        printVector(this.vectorBetas, 3);
+        // System.out.println("\nVector Betas: ");
+        // printVector(this.vectorBetas, 3);
         setBeta_0(this.vectorBetas[0]);
         setBeta_1(this.vectorBetas[1]);
         setBeta_2(this.vectorBetas[2]);
@@ -239,8 +288,8 @@ public class RegressionLinealMultiple1 {
             System.out.println();
         }
     }
-    
-    public void printVector(double[] x, int vSize){
+
+    public void printVector(double[] x, int vSize) {
         for (int i = 0; i < vSize; i++) {
             System.out.println(x[i]);
         }
