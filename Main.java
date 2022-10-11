@@ -13,6 +13,8 @@ public class Main {
                         285.0, 290.0, 297.0, 302.5, 304.5,
                         309.3, 321.7, 330.7, 349.0 };
 
+        static int predict = 100;
+
         public static void main(String[] args) {
                 // SIMPLE LINEAL REGRESSION
                 System.out.println("SIMPLE LINEAL REGRESSION\n");
@@ -20,6 +22,8 @@ public class Main {
                 System.out.println("Beta 0: " + regressionLinealSimple1.getBeta_0());
                 System.out.println("Beta 1: " + regressionLinealSimple1.getBeta_1());
                 System.out.println("Formula: " + regressionLinealSimple1.getFormula());
+                regressionLinealSimple1.predecir(predict);
+                System.out.println("Formula Predict n = 100: " + regressionLinealSimple1.getFormulaP());
 
                 // MULTIPLE LINEAL REGRESSION BY MATRIX
                 System.out.println("\nMULTIPLE LINEAL REGRESSION BY MATRIX\n");
@@ -28,7 +32,7 @@ public class Main {
                 regressionLinealMultiple1.printVector(regressionLinealMultiple1.getVectorBetas(), 3);
                 System.out.println("Formula: " + regressionLinealMultiple1.getFormula());
 
-                // MULTIPLE LIENAL REGRESSION BY DETERMINANTS
+                // MULTIPLE LINEAL REGRESSION BY DETERMINANTS
 
                 System.out.println("\nMULTIPLE LINEAL REGRESSION BY DETERMINANTS\n");
                 RegressionLinealMultiple2 regressionLinealMultiple2 = new RegressionLinealMultiple2(x1, x2, _y);
@@ -36,11 +40,16 @@ public class Main {
                 System.out.println("Beta 1: " + regressionLinealMultiple2.getBeta_1());
                 System.out.println("Beta 2: " + regressionLinealMultiple2.getBeta_2());
                 System.out.println("Formula: " + regressionLinealMultiple2.getFormula());
+                regressionLinealMultiple2.predict(predict);
+                System.out.println("Formula Predict n = 100: " + regressionLinealMultiple2.getFormulaP());
 
                 // DECENDING GRADIENT
                 System.out.println("\nDECENDING GRADIENT\n");
                 DescendingGradient descendingGradient = new DescendingGradient(x, y, 0.1, 0.003);
                 descendingGradient.process();
                 System.out.println("\nFinal Error: " + descendingGradient.getError() + " by a Learning Rate of " + descendingGradient.getLearningRate() + " and an Error Tolerance of: " + descendingGradient.getErrorTorelance());
+                System.out.println();
+                descendingGradient.process_p(predict);
+                System.out.println("\nFinal Error Predict n = " + predict + ": " + descendingGradient.getError_p() + " by a Learning Rate of " + descendingGradient.getLearningRate() + " and an Error Tolerance of: " + descendingGradient.getErrorTorelance());
         }
 }

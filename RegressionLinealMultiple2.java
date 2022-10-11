@@ -21,6 +21,15 @@ public class RegressionLinealMultiple2 {
     private double detB1 = 0;
     private double detB2 = 0;
 
+    private double beta_0_p;
+    private double beta_1_p;
+    private double beta_2_p;
+    private String y_p;
+    private double detT_p = 0;
+    private double detB0_p = 0;
+    private double detB1_p = 0;
+    private double detB2_p = 0;
+
     // Constructor
     RegressionLinealMultiple2(double[] _setX1, double[] _setX2, double[] _setY) {
         this.setX1 = _setX1;
@@ -120,6 +129,38 @@ public class RegressionLinealMultiple2 {
         return detB2;
     }
 
+    public double getBeta_0_p() {
+        return beta_0_p;
+    }
+
+    public double getBeta_1_p() {
+        return beta_1_p;
+    }
+
+    public double getBeta_2_p() {
+        return beta_2_p;
+    }
+
+    public double getDetB0_p() {
+        return detB0_p;
+    }
+
+    public double getDetB1_p() {
+        return detB1_p;
+    }
+
+    public double getDetB2_p() {
+        return detB2_p;
+    }
+
+    public double getDetT_p() {
+        return detT_p;
+    }
+
+    public String getY_p() {
+        return y_p;
+    }
+
     public float getDetMatrix(double[][] x) {
         float det = (float) ((x[0][0] * x[1][1] * x[2][2])
                 + (x[0][1] * x[1][2] * x[2][0])
@@ -148,10 +189,39 @@ public class RegressionLinealMultiple2 {
             this.sumY = (double) this.sumY + (double) this.setY[i];
         }
     }
+    public void setBeta0_p() {
+        this.beta_0 = (float) this.detB0 / this.detT;
+    }
+
+    public void setBeta1_p() {
+        this.beta_1 = (float) this.detB1 / this.detT;
+    }
+
+    public void setBeta2_p() {
+        this.beta_2 = (float) this.detB2 / this.detT;
+    }
+    public void setY_p(String y_p) {
+        this.y_p = y_p;
+    }
 
     public void setMatrix() {
         this.matrix = new double[3][3];
         this.matrix[0][0] = (double) this.n;
+        this.matrix[0][1] = (double) this.sumX1;
+        this.matrix[0][2] = (double) this.sumX2;
+        this.matrix[1][0] = (double) this.sumX1;
+        this.matrix[1][1] = (double) this.sumX1 * (double) this.sumX1;
+        this.matrix[1][2] = (double) this.sumX1 * (double) this.sumX2;
+        this.matrix[2][0] = (double) this.sumX2;
+        this.matrix[2][1] = (double) this.sumX1 * (double) this.sumX2;
+        this.matrix[2][2] = (double) this.sumX2 * (double) this.sumX2;
+        // System.out.println("Matrix: ");
+        // printMatrix(matrix);
+    }
+
+    public void setMatrix(int _n) { // Predict
+        this.matrix = new double[3][3];
+        this.matrix[0][0] = (double) _n;
         this.matrix[0][1] = (double) this.sumX1;
         this.matrix[0][2] = (double) this.sumX2;
         this.matrix[1][0] = (double) this.sumX1;
@@ -194,9 +264,39 @@ public class RegressionLinealMultiple2 {
         // printMatrix(matrixB1);
     }
 
+    public void setMatrixB1(int _n) {
+        this.matrixB1 = new double[3][3];
+        this.matrixB1[0][0] = (double) _n;
+        this.matrixB1[0][1] = (double) this.sumY;
+        this.matrixB1[0][2] = (double) this.sumX2;
+        this.matrixB1[1][0] = (double) this.sumX1;
+        this.matrixB1[1][1] = (double) this.sumY * (double) this.sumX1;
+        this.matrixB1[1][2] = (double) this.sumX1 * (double) this.sumX2;
+        this.matrixB1[2][0] = (double) this.sumX2;
+        this.matrixB1[2][1] = (double) this.sumY * (double) this.sumX2;
+        this.matrixB1[2][2] = (double) this.sumX2 * (double) this.sumX2;
+        // System.out.println("Matrix B1: ");
+        // printMatrix(matrixB1);
+    }
+
     public void setMatrixB2() {
         this.matrixB2 = new double[3][3];
         this.matrixB2[0][0] = (double) this.n;
+        this.matrixB2[0][1] = (double) this.sumX1;
+        this.matrixB2[0][2] = (double) this.sumY;
+        this.matrixB2[1][0] = (double) this.sumX1;
+        this.matrixB2[1][1] = (double) this.sumX1 * (double) this.sumX1;
+        this.matrixB2[1][2] = (double) this.sumY * (double) this.sumX1;
+        this.matrixB2[2][0] = (double) this.sumX2;
+        this.matrixB2[2][1] = (double) this.sumX1 * (double) this.sumX2;
+        this.matrixB2[2][2] = (double) this.sumY * (double) this.sumX2;
+        // System.out.println("Matrix B2: ");
+        // printMatrix(matrixB2);
+    }
+
+    public void setMatrixB2(int _n) {
+        this.matrixB2 = new double[3][3];
+        this.matrixB2[0][0] = (double) _n;
         this.matrixB2[0][1] = (double) this.sumX1;
         this.matrixB2[0][2] = (double) this.sumY;
         this.matrixB2[1][0] = (double) this.sumX1;
@@ -281,5 +381,24 @@ public class RegressionLinealMultiple2 {
     public String getFormula() {
         this.y = "ŷ = " + this.beta_0 + " + " + this.beta_1 + "x1 + " + this.beta_2 + "x2 + ε";
         return this.y;
+    }
+
+    public void predict(int _n){
+        setMatrix(_n);
+        // setMatrixB0();
+        setMatrixB1(_n);
+        setMatrixB2(_n);
+        setDetMatrixT();
+        setDetMatrixB0();
+        setDetMatrixB1();
+        setDetMatrixB2();
+        setBeta0_p();
+        setBeta1_p();
+        setBeta2_p();
+        this.y_p =  "ŷ = " + this.beta_0_p + " + " + this.beta_1_p + "x1 + " + this.beta_2_p + "x2 + ε";
+    }
+
+    public String getFormulaP(){
+        return this.y_p;
     }
 }
