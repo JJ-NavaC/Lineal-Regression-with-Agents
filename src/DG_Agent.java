@@ -2,7 +2,7 @@ import jade.core.Agent;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
 
-public class SLR_Agent extends Agent {
+public class DG_Agent extends Agent {
     private String[] setX;
     private String[] setY;
     private int[] x;
@@ -52,9 +52,9 @@ public class SLR_Agent extends Agent {
 
     // Main Agent Method
     public void setup() {
-        System.out.println("Hi, i'm the SLR_Agent");
-        addBehaviour(new RecieveDataSetY());
+        System.out.println("Hi, i'm the DG_Agent");
         addBehaviour(new RecieveDataSetX());
+        addBehaviour(new RecieveDataSetY());        
     }
 
     // Recibir DataSet X

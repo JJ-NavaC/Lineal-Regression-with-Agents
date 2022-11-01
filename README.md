@@ -1,24 +1,37 @@
 # Lineal Regression with Agents
-##### You must have 'openjdk 11.0.16' and 'javac 11.0.16' preinstalled on your Linux/UNIX OS
 ###### Made by: JJ-NavaC
+#### You must have 'openjdk 11.0.16' and 'javac 11.0.16' preinstalled on your Linux/UNIX OS
 
-Compile
+##### Compile
 ```console
 javac Main.java -d classes/
 ```
-Run
+##### Run
 ```console
 java -cp classes/ Main
 ```
-# With JADE
-Compile
+## With JADE
+##### Compile
 ```console
 javac -cp lib/jade.jar src/*.java -d classes/
 ```
-Run
+##### Run
 ```console
-java -cp lib/jade.jar:classes/ jade.Boot -gui <AgentName>:<class>
+java -cp lib/jade.jar:classes/ jade.Boot -gui SLR_Agent:SLR_Agent
+```
 
-java -cp lib/jade.jar:classes/ jade.Boot -container <Agent1Name>:<class1>
+```console
+java -cp lib/jade.jar:classes/ jade.Boot -container DG_Agent:DG_Agent
+```
 
-java -cp lib/jade.jar:classes/ jade.Boot -container <Agent2Name>:<class2>
+```console
+java -cp lib/jade.jar:classes/ jade.Boot -container MLR1_Agent:MLR1_Agent
+```
+
+```console
+java -cp lib/jade.jar:classes/ jade.Boot -container MLR2_Agent:MLR2_Agent
+```
+
+```console
+java -cp lib/jade.jar:classes/ jade.Boot -container Sender_Agent:Sender_Agent
+```
