@@ -33,5 +33,5 @@ java -cp lib/jade.jar:classes/ jade.Boot -container MLR2_Agent:MLR2_Agent
 ```
 
 ```console
-java -cp lib/jade.jar:classes/ jade.Boot -container Sender_Agent:Sender_Agent
+java -cp lib/jade.jar:classes/ jade.Boot -container SenderAgent:SenderAgent
 ```

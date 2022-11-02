@@ -2,9 +2,9 @@ public class RegressionLinealSimple {
     // Private Variables
     private int beta_0;
     private int beta_1;
-    private String y;
-    private int[] setX;
-    private int[] setY;
+    private String _y;
+    private int[] x;
+    private int[] y;
     private int Xi = 0;
     private int Yi = 0;
     private int n;
@@ -14,8 +14,8 @@ public class RegressionLinealSimple {
 
     // Constructor
     public RegressionLinealSimple(int[] _setX, int[] _setY) {
-        this.setX = _setX;
-        this.setY = _setY;
+        this.x = _setX;
+        this.y = _setY;
         for (int i = 0; i < _setX.length; i++) {
             this.Xi = this.Xi + _setX[i];
         }
@@ -38,18 +38,18 @@ public class RegressionLinealSimple {
     }
 
     public String getY() {
-        return y;
+        return _y;
     }
 
     public void getSetX() {
-        for (int i = 0; i < setX.length; i++) {
-            System.out.print(setX[i]);
+        for (int i = 0; i < x.length; i++) {
+            System.out.print(x[i]);
         }
     }
 
     public void getSetY() {
-        for (int i = 0; i < setY.length; i++) {
-            System.out.print(setY[i]);
+        for (int i = 0; i < x.length; i++) {
+            System.out.print(x[i]);
         }
     }
 
@@ -87,11 +87,11 @@ public class RegressionLinealSimple {
     }
 
     public void setSetX(int[] _x) {
-        this.setX = _x;
+        this.x = _x;
     }
 
     public void setSetY(int[] _y) {
-        this.setY = _y;
+        this.y = _y;
     }
 
     public void setXi(int _Xi) {
@@ -107,7 +107,7 @@ public class RegressionLinealSimple {
     }
 
     public void setY(String _y) {
-        this.y = _y;
+        this._y = _y;
     }
 
     public void setBeta_0_p(int beta_0_p) {
@@ -170,8 +170,8 @@ public class RegressionLinealSimple {
 
     // Set and Get ŷ Formula
     public String getFormula() {
-        this.y = "ŷ = " + beta_0 + " + " + beta_1 + "x + ε";
-        return this.y;
+        this._y = "ŷ = " + beta_0 + " + " + beta_1 + "x + ε";
+        return this._y;
     }
 
     public String getFormulaP() {
