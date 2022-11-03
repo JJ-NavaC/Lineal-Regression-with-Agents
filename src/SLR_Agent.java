@@ -228,8 +228,8 @@ public class SLR_Agent extends Agent {
     // Main Agent Method
     public void setup() {
         System.out.println("Hi, i'm the SLR_Agent");
-        addBehaviour(new RecieveDataSetY());
         addBehaviour(new RecieveDataSetX());
+        addBehaviour(new RecieveDataSetY());
     }
 
     // Recibir DataSet X
