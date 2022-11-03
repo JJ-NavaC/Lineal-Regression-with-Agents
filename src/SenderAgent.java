@@ -4,8 +4,8 @@ import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
 
 public class SenderAgent extends Agent {
-    static int[] x = { 1, 2, 2, 3 };
-    static int[] y = { 1, 2, 3, 6 };
+    static int[] x = { 1, 2, 3, 4 };
+    static int[] y = { 2, 4, 6, 8 };
     static double[] x1 = { 41.9, 43.4, 43.9, 44.5, 47.3, 47.5, 47.9, 50.2, 52.8,
             53.2, 56.7, 57.0, 63.5, 65.3, 71.1,
             77.0, 77.8 };

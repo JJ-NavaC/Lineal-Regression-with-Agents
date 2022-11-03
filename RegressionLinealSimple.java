@@ -23,8 +23,8 @@ public class RegressionLinealSimple {
             this.Yi = this.Yi + _setY[i];
         }
         n = _setX.length;
-        calculateBeta_0();
-        calculateBeta_1();
+        System.out.println("B1 " + calculateBeta_1()); // calculateBeta_1();
+        System.out.println("B0 " + calculateBeta_0()); // calculateBeta_0();
         setY(getFormula());
     }
 
@@ -151,7 +151,7 @@ public class RegressionLinealSimple {
         int numerator = 0;
         int denominator = 0;
         numerator = (n * Xi * Yi) - (Xi * Yi);
-        denominator = (n * Xi + Xi) - (Xi * Xi);
+        denominator = (n * Xi * Xi) - (Xi * Xi);
         aux = numerator / denominator;
         setBeta_1(aux);
         return aux;
@@ -162,7 +162,7 @@ public class RegressionLinealSimple {
         int numerator = 0;
         int denominator = 0;
         numerator = (_n * Xi * Yi) - (Xi * Yi);
-        denominator = (_n * Xi + Xi) - (Xi * Xi);
+        denominator = (_n * Xi * Xi) - (Xi * Xi);
         aux = numerator / denominator;
         setBeta_1_p(aux);
         return aux;

@@ -192,7 +192,7 @@ public class SLR_Agent extends Agent {
         int numerator = 0;
         int denominator = 0;
         numerator = (n * Xi * Yi) - (Xi * Yi);
-        denominator = (n * Xi + Xi) - (Xi * Xi);
+        denominator = (n * Xi * Xi) - (Xi * Xi);
         aux = numerator / denominator;
         setBeta_1(aux);
         return aux;
@@ -203,7 +203,7 @@ public class SLR_Agent extends Agent {
         int numerator = 0;
         int denominator = 0;
         numerator = (_n * Xi * Yi) - (Xi * Yi);
-        denominator = (_n * Xi + Xi) - (Xi * Xi);
+        denominator = (_n * Xi * Xi) - (Xi * Xi);
         aux = numerator / denominator;
         setBeta_1_p(aux);
         return aux;
@@ -230,6 +230,9 @@ public class SLR_Agent extends Agent {
         System.out.println("Hi, i'm the SLR_Agent");
         addBehaviour(new RecieveDataSetX());
         addBehaviour(new RecieveDataSetY());
+        /* System.out.println(getBeta_0());
+        System.out.println(getBeta_1());
+        System.out.println(getFormula()); */
     }
 
     // Recibir DataSet X
