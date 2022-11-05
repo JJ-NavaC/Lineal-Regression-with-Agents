@@ -294,4 +294,13 @@ public class RegressionLinealMultiple1 {
             System.out.println(x[i]);
         }
     }
+
+    public String getFormulaP(int p){
+        if(p>getN()){
+            return "ŷ = " + getBeta_0() + " + " + (getBeta_1()+setX1[getN()-1]/(2*p)) + "x1 + " + (getBeta_2()+setX1[getN()-1]/(2*p)) + "x2 + ε";        
+        } else {
+            return "ŷ = " + getBeta_0() + " + " + getBeta_1() + "x1 + " + getBeta_2() + "x2 + ε";        
+        }
+       
+    }
 }

@@ -462,20 +462,41 @@ public class MLR2_Agent extends Agent {
         // setMatrixB0();
         setMatrixB1(_n);
         setMatrixB2(_n);
-        setDetMatrixT();
-        setDetMatrixB0();
-        setDetMatrixB1();
-        setDetMatrixB2();
+        setDetMatrixT_p();
+        setDetMatrixB0_p();
+        setDetMatrixB1_p();
+        setDetMatrixB2_p();
+        setDetMatrixT_p();
         setBeta0_p();
         setBeta1_p();
         setBeta2_p();
         this.y_p = "ŷ = " + this.beta_0_p + " + " + this.beta_1_p + "x1 + " + this.beta_2_p + "x2 + ε";
     }
 
+    public void setDetMatrixT_p() {
+        this.detT_p = (float) getDetMatrix(this.matrix);
+        // printDetProcess(this.matrix);
+    }
+
+    public void setDetMatrixB0_p() {
+        this.detB0_p = (float) getDetMatrix(this.matrixB0);
+        // printDetProcess(this.matrixB0);
+    }
+
+    public void setDetMatrixB1_p() {
+        this.detB1_p = (float) getDetMatrix(this.matrixB1);
+        // printDetProcess(this.matrixB1);
+    }
+
+    public void setDetMatrixB2_p() {
+        this.detB2_p = (float) getDetMatrix(this.matrixB2);
+        // printDetProcess(this.matrixB2);
+    }
+
     public String getFormulaP() {
         return this.y_p;
     }
-
+    
     // Main Agent Method
     public void setup() {
         System.out.println("Hi, i'm the MLR2_Agent");

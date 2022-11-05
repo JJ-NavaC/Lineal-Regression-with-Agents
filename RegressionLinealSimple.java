@@ -23,8 +23,8 @@ public class RegressionLinealSimple {
             this.Yi = this.Yi + _setY[i];
         }
         n = _setX.length;
-        System.out.println("B1 " + calculateBeta_1()); // calculateBeta_1();
-        System.out.println("B0 " + calculateBeta_0()); // calculateBeta_0();
+        calculateBeta_1();
+        calculateBeta_0();
         setY(getFormula());
     }
 
@@ -77,6 +77,14 @@ public class RegressionLinealSimple {
         return y_p;
     }
 
+    public int[] getX() {
+        return x;
+    }
+
+    public String get_y() {
+        return _y;
+    }
+    
     // Setters
     public void setBeta_0(int _beta_0) {
         this.beta_0 = _beta_0;

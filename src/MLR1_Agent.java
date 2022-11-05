@@ -368,6 +368,15 @@ public class MLR1_Agent extends Agent {
         }
     }
 
+    public String getFormulaP(int p){
+        if(p>getN()){
+            return "ŷ = " + getBeta_0() + " + " + (getBeta_1()+setX1[getN()-1]/(2*p)) + "x1 + " + (getBeta_2()+setX1[getN()-1]/(2*p)) + "x2 + ε";        
+        } else {
+            return "ŷ = " + getBeta_0() + " + " + getBeta_1() + "x1 + " + getBeta_2() + "x2 + ε";        
+        }
+       
+    }
+
     // Main Agent Method
     public void setup() {
         System.out.println("Hi, i'm the MLR1_Agent");

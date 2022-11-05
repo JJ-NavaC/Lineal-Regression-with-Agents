@@ -189,17 +189,19 @@ public class RegressionLinealMultiple2 {
             this.sumY = (double) this.sumY + (double) this.setY[i];
         }
     }
+
     public void setBeta0_p() {
-        this.beta_0 = (float) this.detB0 / this.detT;
+        this.beta_0_p = (float) this.detB0_p / this.detT_p;
     }
 
     public void setBeta1_p() {
-        this.beta_1 = (float) this.detB1 / this.detT;
+        this.beta_1_p = (float) this.detB1_p / this.detT_p;
     }
 
     public void setBeta2_p() {
-        this.beta_2 = (float) this.detB2 / this.detT;
+        this.beta_2_p = (float) this.detB2_p / this.detT_p;
     }
+
     public void setY_p(String y_p) {
         this.y_p = y_p;
     }
@@ -383,22 +385,43 @@ public class RegressionLinealMultiple2 {
         return this.y;
     }
 
-    public void predict(int _n){
+    public void predict(int _n) {
         setMatrix(_n);
         // setMatrixB0();
         setMatrixB1(_n);
         setMatrixB2(_n);
-        setDetMatrixT();
-        setDetMatrixB0();
-        setDetMatrixB1();
-        setDetMatrixB2();
+        setDetMatrixT_p();
+        setDetMatrixB0_p();
+        setDetMatrixB1_p();
+        setDetMatrixB2_p();
+        setDetMatrixT_p();
         setBeta0_p();
         setBeta1_p();
         setBeta2_p();
-        this.y_p =  "ŷ = " + this.beta_0_p + " + " + this.beta_1_p + "x1 + " + this.beta_2_p + "x2 + ε";
+        this.y_p = "ŷ = " + this.beta_0_p + " + " + this.beta_1_p + "x1 + " + this.beta_2_p + "x2 + ε";
     }
 
-    public String getFormulaP(){
+    public void setDetMatrixT_p() {
+        this.detT_p = (float) getDetMatrix(this.matrix);
+        // printDetProcess(this.matrix);
+    }
+
+    public void setDetMatrixB0_p() {
+        this.detB0_p = (float) getDetMatrix(this.matrixB0);
+        // printDetProcess(this.matrixB0);
+    }
+
+    public void setDetMatrixB1_p() {
+        this.detB1_p = (float) getDetMatrix(this.matrixB1);
+        // printDetProcess(this.matrixB1);
+    }
+
+    public void setDetMatrixB2_p() {
+        this.detB2_p = (float) getDetMatrix(this.matrixB2);
+        // printDetProcess(this.matrixB2);
+    }
+
+    public String getFormulaP() {
         return this.y_p;
     }
 }
