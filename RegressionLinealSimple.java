@@ -8,9 +8,6 @@ public class RegressionLinealSimple {
     private int Xi = 0;
     private int Yi = 0;
     private int n;
-    private int beta_0_p;
-    private int beta_1_p;
-    private String y_p;
 
     // Constructor
     public RegressionLinealSimple(int[] _setX, int[] _setY) {
@@ -65,18 +62,6 @@ public class RegressionLinealSimple {
         return n;
     }
 
-    public int getBeta_0_p() {
-        return beta_0_p;
-    }
-
-    public int getBeta_1_p() {
-        return beta_1_p;
-    }
-
-    public String getY_p() {
-        return y_p;
-    }
-
     public int[] getX() {
         return x;
     }
@@ -118,18 +103,6 @@ public class RegressionLinealSimple {
         this._y = _y;
     }
 
-    public void setBeta_0_p(int beta_0_p) {
-        this.beta_0_p = beta_0_p;
-    }
-
-    public void setBeta_1_p(int beta_1_p) {
-        this.beta_1_p = beta_1_p;
-    }
-
-    public void setY_p(String y_p) {
-        this.y_p = y_p;
-    }
-
     // Calculate beta_0
     public int calculateBeta_0() {
         int aux = 0;
@@ -139,17 +112,6 @@ public class RegressionLinealSimple {
         denominator = n;
         aux = numerator / denominator;
         setBeta_0(aux);
-        return aux;
-    }
-
-    public int calculateBeta_0(int _n) { // Predict
-        int aux = 0;
-        int numerator = 0;
-        int denominator = 0;
-        numerator = Yi - (getBeta_1_p() * Xi);
-        denominator = _n;
-        aux = numerator / denominator;
-        setBeta_0_p(aux);
         return aux;
     }
 
@@ -165,30 +127,13 @@ public class RegressionLinealSimple {
         return aux;
     }
 
-    public int calculateBeta_1(int _n) { // Predict
-        int aux = 0;
-        int numerator = 0;
-        int denominator = 0;
-        numerator = (_n * Xi * Yi) - (Xi * Yi);
-        denominator = (_n * Xi * Xi) - (Xi * Xi);
-        aux = numerator / denominator;
-        setBeta_1_p(aux);
-        return aux;
-    }
-
     // Set and Get ŷ Formula
     public String getFormula() {
-        this._y = "ŷ = " + beta_0 + " + " + beta_1 + "x + ε";
+        this._y = "y = " + beta_0 + " + " + beta_1 + "x + error";
         return this._y;
     }
 
-    public String getFormulaP() {
-        return "ŷ = " + beta_0_p + " + " + beta_1_p + "x + ε";
-    }
-
-    public void predecir(int _n) {
-        beta_0_p = calculateBeta_0(_n);
-        beta_1_p = calculateBeta_1(_n);
-        y_p = getFormulaP();
+    public int predict(int _x1) {
+        return this.beta_0 + (this.beta_1 * _x1);
     }
 }

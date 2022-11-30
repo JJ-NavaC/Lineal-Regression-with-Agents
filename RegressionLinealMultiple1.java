@@ -101,7 +101,7 @@ public class RegressionLinealMultiple1 {
     }
 
     public String getFormula() {
-        this.y = "ŷ = " + this.beta_0 + " + " + this.beta_1 + "x1 + " + this.beta_2 + "x2 + ε";
+        this.y = "y = " + this.beta_0 + " + " + this.beta_1 + "x1 + " + this.beta_2 + "x2 + error";
         return this.y;
     }
 
@@ -295,12 +295,7 @@ public class RegressionLinealMultiple1 {
         }
     }
 
-    public String getFormulaP(int p){
-        if(p>getN()){
-            return "ŷ = " + getBeta_0() + " + " + (getBeta_1()+setX1[getN()-1]/(2*p)) + "x1 + " + (getBeta_2()+setX1[getN()-1]/(2*p)) + "x2 + ε";        
-        } else {
-            return "ŷ = " + getBeta_0() + " + " + getBeta_1() + "x1 + " + getBeta_2() + "x2 + ε";        
-        }
-       
+    public double predict(double _x1, double _x2){
+        return this.beta_0 + (this.beta_1 * _x1) + (this.beta_2 * _x2);
     }
 }
