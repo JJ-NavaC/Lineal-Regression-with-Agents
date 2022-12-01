@@ -1,9 +1,9 @@
 
 public class Main {
-        static int[] x = { 1, 2, 3, 4 };
-        static int[] y = { 2, 4, 6, 8 };
+        static int[] x = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        static int[] y = { 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
         static int predictX = 3;
-        static double errorTolerance = 0.1;
+        static double errorTolerance = 0.001;
         static double learningRate = 0.003;
 
         /*

@@ -106,7 +106,7 @@ public class DescendingGradient {
         for (int i = 0; i < getN(); i++) {
             aux = aux + ((setY[i] - (getBeta_0() + (getBeta_1() * setX[i]))));
         }
-        aux1 = (1 / getN()) * (Math.pow(aux, 2));
+        aux1 = (1 / getN()) * (aux*aux);
         setError(aux1);
     }
 
